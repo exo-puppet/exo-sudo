@@ -1,0 +1,17 @@
+class sudo($sudo_role = "standard"){
+
+    package {
+        sudo:
+            ensure => latest,
+    }
+
+    file {
+        "/etc/sudoers.d/${sudo_role}":
+            owner   => root,
+            group   => root,
+            mode    => 440,
+            source  => "puppet:///modules/sudo/${sudo_role}-sudoers",
+            require => Package["sudo"],
+            ensure  => file,
+    }
+}

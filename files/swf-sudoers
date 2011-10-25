@@ -1,0 +1,18 @@
+# Aliases
+Cmnd_Alias      POSTGRES = /usr/bin/createdb, /usr/bin/createuser, /usr/bin/pg_dump, /usr/bin/psql
+Cmnd_Alias      MYSQL = /usr/bin/mysqldump, /usr/bin/mysql
+Cmnd_Alias      SWF_SERVICES = /etc/init.d/swfnexus, /etc/init.d/swfhudson, /etc/init.d/swfjira, /etc/init.d/swfconfluence, /etc/init.d/swfcrowd, /etc/init.d/swfcrowdid
+Cmnd_Alias      SYSTEM_MAINTENANCE = /sbin/reboot, /usr/bin/aptitude, /usr/sbin/service
+
+Runas_Alias     SWF_ACCOUNTS = swfsvn, swfgit, swfnexus, swfhudson, swfjira, swfconfluence, swfcrowd, swfcrowdid, swffisheye, swfsonar, www-data, mysql
+
+# SVN and GIT may have to do tasks as www-data
+swfgit          ALL = (www-data) NOPASSWD: ALL
+swfsvn          ALL = (www-data) NOPASSWD: ALL
+
+# SWF admins privilege specification
+%swfadmins      ALL = (ALL) ALL
+
+# SysAdmins privilege specification
+%sysadmins      ALL = SWF_SERVICES, SYSTEM_MAINTENANCE, MYSQL, POSTGRES
+%sysadmins      ALL = (SWF_ACCOUNTS) ALL

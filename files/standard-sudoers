@@ -1,0 +1,2 @@
+# SysAdmins privilege specification
+%sysadmins      ALL = (ALL) ALL
