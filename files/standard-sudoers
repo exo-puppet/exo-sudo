@@ -1,2 +1,2 @@
-# SysAdmins privilege specification
-%sysadmins      ALL = (ALL) ALL
+# ITOP privilege specification
+%itop      ALL = (ALL) ALL

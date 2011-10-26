@@ -11,8 +11,12 @@ swfgit          ALL = (www-data) NOPASSWD: ALL
 swfsvn          ALL = (www-data) NOPASSWD: ALL
 
 # SWF admins privilege specification
-%swfadmins      ALL = (ALL) ALL
+%swf            ALL = (ALL) ALL
 
-# SysAdmins privilege specification
-%sysadmins      ALL = SWF_SERVICES, SYSTEM_MAINTENANCE, MYSQL, POSTGRES
-%sysadmins      ALL = (SWF_ACCOUNTS) ALL
+# Local SysAdmins privilege specification
+%sysadmin       ALL = SWF_SERVICES, SYSTEM_MAINTENANCE, MYSQL, POSTGRES
+%sysadmin       ALL = (SWF_ACCOUNTS) ALL
+
+# ITOP privilege specification
+%itop           ALL = SWF_SERVICES, SYSTEM_MAINTENANCE, MYSQL, POSTGRES
+%itop           ALL = (SWF_ACCOUNTS) ALL
