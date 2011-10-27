@@ -1,7 +1,7 @@
 # Aliases
 Cmnd_Alias      POSTGRES = /usr/bin/createdb, /usr/bin/createuser, /usr/bin/pg_dump, /usr/bin/psql
 Cmnd_Alias      MYSQL = /usr/bin/mysqldump, /usr/bin/mysql
-Cmnd_Alias      SWF_SERVICES = /etc/init.d/swfnexus, /etc/init.d/swfhudson, /etc/init.d/swfjira, /etc/init.d/swfconfluence, /etc/init.d/swfcrowd, /etc/init.d/swfcrowdid
+Cmnd_Alias      SWF_SERVICES = /etc/init.d/swfnexus, /etc/init.d/swfhudson, /etc/init.d/swfjira, /etc/init.d/swfconfluence, /etc/init.d/swfcrowd, /etc/init.d/swfcrowdid, /etc/init.d/swffisheye, /etc/init.d/swfsonar, /etc/init.d/apache2, /etc/init.d/mysql
 Cmnd_Alias      SYSTEM_MAINTENANCE = /sbin/reboot, /usr/bin/aptitude, /usr/sbin/service
 
 Runas_Alias     SWF_ACCOUNTS = swfsvn, swfgit, swfnexus, swfhudson, swfjira, swfconfluence, swfcrowd, swfcrowdid, swffisheye, swfsonar, www-data, mysql
@@ -9,6 +9,9 @@ Runas_Alias     SWF_ACCOUNTS = swfsvn, swfgit, swfnexus, swfhudson, swfjira, swf
 # SVN and GIT may have to do tasks as www-data
 swfgit          ALL = (www-data) NOPASSWD: ALL
 swfsvn          ALL = (www-data) NOPASSWD: ALL
+
+# Jenkins need to restart Apache for continuous deployment
+swfhudson       ALL = (root) NOPASSWD: /usr/sbin/service apache2 reload, /usr/sbin/ufw, /usr/sbin/logrotate, /usr/lib/cgi-bin/awstats.pl
 
 # SWF admins privilege specification
 %swf            ALL = (ALL) ALL
