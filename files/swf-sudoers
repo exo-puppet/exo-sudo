@@ -11,7 +11,7 @@ swfgit          ALL = (www-data) NOPASSWD: ALL
 swfsvn          ALL = (www-data) NOPASSWD: ALL
 
 # Jenkins need to restart Apache for continuous deployment
-swfhudson       ALL = (root) NOPASSWD: /usr/sbin/service apache2 reload, /usr/sbin/ufw, /usr/sbin/logrotate, /usr/lib/cgi-bin/awstats.pl
+prjacc          ALL = (root) NOPASSWD: /usr/sbin/service apache2 reload, /usr/sbin/ufw, /usr/sbin/logrotate, /usr/lib/cgi-bin/awstats.pl
 
 # SWF admins privilege specification
 %swf            ALL = (ALL) ALL
