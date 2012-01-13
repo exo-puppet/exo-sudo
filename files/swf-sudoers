@@ -1,3 +1,8 @@
+# ###################################
+# This file is managed by puppet
+# PLEASE DON'T MODIFY BY HAND
+# ###################################
+
 # Aliases
 Cmnd_Alias      POSTGRES = /usr/bin/createdb, /usr/bin/createuser, /usr/bin/pg_dump, /usr/bin/psql
 Cmnd_Alias      MYSQL = /usr/bin/mysqldump, /usr/bin/mysql
