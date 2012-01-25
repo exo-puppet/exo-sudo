@@ -26,13 +26,10 @@
 #   }
 #
 ################################################################################
-class sudo ( $lastversion = false, $sudo_role = "standard" ) {
+class sudo ( $lastversion = false ) {
     # parameters validation
     if ($lastversion != true) and ($lastversion != false) {
         fail("lastversion must be true or false")
-    }
-    if ($sudo_role != "default") and ($sudo_role != "swf") {
-        fail("sudo_role must be swf or standard")
     }
 
     include repo

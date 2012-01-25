@@ -1,7 +1,0 @@
-# ###################################
-# This file is managed by puppet
-# PLEASE DON'T MODIFY BY HAND
-# ###################################
-
-# ITOP privilege specification
-%itop      ALL = (ALL) ALL
