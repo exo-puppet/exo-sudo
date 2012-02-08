@@ -13,7 +13,6 @@ class sudo::params {
 	case $::operatingsystem {
 		/(Ubuntu|Debian)/: {
             $package_name       = ["sudo"]
-            $service_name       = "sudo"
             $configuration_dir  = "/etc/sudoers.d"
 		}
 		default: {

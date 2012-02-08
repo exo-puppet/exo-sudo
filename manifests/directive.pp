@@ -60,6 +60,5 @@ define sudo::directive (
               default => $source,
           },
           require => Class["sudo::install"],
-          notify => Class["sudo::service"],
   }    
 }

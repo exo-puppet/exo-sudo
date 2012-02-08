@@ -1,6 +1,6 @@
 ################################################################################
 #
-#   This module manages the sudo service.
+#   This module manages sudo.
 #
 #   Tested platforms:
 #    - Ubuntu 11.04 Natty
@@ -33,5 +33,5 @@ class sudo ( $lastversion = false ) {
     }
 
     include repo
-    include sudo::params, sudo::install, sudo::config, sudo::service
+    include sudo::params, sudo::install, sudo::config
 }
