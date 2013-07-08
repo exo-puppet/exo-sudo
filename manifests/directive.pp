@@ -10,17 +10,17 @@
 # == Parameters
 #   [+ensure+]
 #       (OPTIONAL) (default: present)
-#       
+#
 #       this variable allows to choose if the directive must be present or absent
 #
 #   [+content+]
 #       (OPTIONAL) (default: "")
-#       
+#
 #       this variable allows to set the +content+ string into the sudo file (+content+ or +source+ must be set)
 #
 #   [+source+]
 #       (OPTIONAL) (default: "")
-#       
+#
 #       this variable allows to set the +source+ for the sudo file as a file, template ... (+content+ or +source+ must be set)
 #
 #
@@ -34,31 +34,27 @@
 #    }
 ################################################################################
 define sudo::directive (
-  $ensure=present,
-  $content="",
-  $source=""
-) {
-    
+  $ensure  = present,
+  $content = '',
+  $source  = '') {
   include sudo::params
 
   # sudo skipping file names that contain a "."
-  $dname = regsubst($name, '\.', '-', 'G') 
-  
-  file {
-      "${sudo::params::configuration_dir}/${dname}" :
-          ensure => $ensure,
-          owner => root,
-          group => root,
-          mode => 0440,
-          content => $content ? {
-              "" => undef,
-              default =>
-              "# ###################################\n# This file is managed by puppet\n# PLEASE DON'T MODIFY BY HAND\n# ###################################\n\n$content",
-          },
-          source => $source ? {
-              "" => undef,
-              default => $source,
-          },
-          require => Class["sudo::install"],
-  }    
+  $dname = regsubst($name, '\.', '-', 'G')
+
+  file { "${sudo::params::configuration_dir}/${dname}":
+    ensure  => $ensure,
+    owner   => root,
+    group   => root,
+    mode    => 0440,
+    content => $content ? {
+      ''      => undef,
+      default => "# ###################################\n# This file is managed by puppet\n# PLEASE DON'T MODIFY BY HAND\n# ###################################\n\n${content}",
+    },
+    source  => $source ? {
+      ''      => undef,
+      default => $source,
+    },
+    require => Class['sudo::install'],
+  }
 }
