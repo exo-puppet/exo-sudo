@@ -56,5 +56,12 @@ define sudo::directive (
       default => $source,
     },
     require => Class['sudo::install'],
+    notify  => Exec["validate-sudo-file-${dname}"]
+  }
+
+  exec { "validate-sudo-file-${dname}":
+    command     => "/usr/sbin/visudo -c -f ${sudo::params::configuration_dir}/${dname}",
+    subscribe   => File["${sudo::params::configuration_dir}/${dname}"],
+    refreshonly => true,
   }
 }
