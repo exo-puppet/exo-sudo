@@ -37,7 +37,7 @@ define sudo::directive (
   $ensure  = present,
   $content = '',
   $source  = '') {
-  include sudo::params
+  require sudo
 
   # sudo skipping file names that contain a "."
   $dname = regsubst($name, '\.', '-', 'G')
@@ -55,7 +55,6 @@ define sudo::directive (
       ''      => undef,
       default => $source,
     },
-    require => Class['sudo::install'],
     notify  => Exec["validate-sudo-file-${dname}"]
   }
 
@@ -64,4 +63,5 @@ define sudo::directive (
     subscribe   => File["${sudo::params::configuration_dir}/${dname}"],
     refreshonly => true,
   }
+
 }
