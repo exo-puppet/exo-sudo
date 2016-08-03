@@ -34,6 +34,6 @@ class sudo (
     fail('lastversion must be true or false')
   }
 
-  include repo
+  include stdlib
   include sudo::params, sudo::install, sudo::config
 }
